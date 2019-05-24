@@ -1,4 +1,4 @@
-package com.smart_concept;
+package com.smart.concept;
 
 /**
  * @Title：Forum

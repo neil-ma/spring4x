@@ -23,8 +23,8 @@ public class PerformanceHandler implements InvocationHandler{
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        PerformanceMonitor.begin("start to monitor " + obj.getClass().getName() + "," + method.getName() + "...");
-        Object obj_out =  method.invoke(obj,method);
+        PerformanceMonitor.begin("start to monitor " + obj.getClass().getName() + "." + method.getName() + "...");
+        Object obj_out =  method.invoke(obj,args);
         PerformanceMonitor.end();
         return obj_out;
     }

@@ -1,11 +1,12 @@
 package com.smart.proxy;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 public class TestJdkProxy {
     public static void main(String[] args) {
         ForumService fs = new ForumServiceImpl2();
-        PerformanceHandler ph = new PerformanceHandler(fs);
+        InvocationHandler ph =  new PerformanceHandler(fs);
         /**
          * 通过Proxy类的newProxyInstance方法创建代理对象，我们来看下方法中的参数
          * 第一个参数：使用handler对象的classloader对象来加载我们的代理对象

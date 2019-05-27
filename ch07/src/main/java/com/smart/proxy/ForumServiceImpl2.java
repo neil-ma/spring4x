@@ -9,12 +9,14 @@ package com.smart.proxy;
 public class ForumServiceImpl2 implements ForumService {
 
     public void removeTopic(int topicId) {
+       // PerformanceMonitor.begin("com.smart.proxy.ForumServiceImpl.removeTopic");       //抽取出横切逻辑，准备放到外部统一执行
         System.out.println("模拟删除Topic记录" + topicId);   //业务代码
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+       // PerformanceMonitor.end();
     }
 
     public void removeForum(int forumId) {

@@ -21,9 +21,18 @@ public class PerformanceHandler implements InvocationHandler{
     public PerformanceHandler(Object obj) {
         this.obj = obj;
     }
-
+    /**
+     * 所有AOP的横切逻辑，包括事务提交、性能监控等，都在invoke方法中定义。
+     * 每次执行代理类的方法时，都会运行这个方法。
+     * @param proxy
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable
+     */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         PerformanceMonitor.begin("start to monitor " + obj.getClass().getName() + "." + method.getName() + "...");
+        //实际上是运行被代理类的方法，执行的是TestJdkProxy的这2句：proxy.removeForum(2000);  proxy.removeTopic(4000);
         Object obj_out =  method.invoke(obj,args);
         PerformanceMonitor.end();
         return obj_out;
